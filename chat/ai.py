@@ -25,6 +25,7 @@ async def ChatCompletionsAI(logged_in_user, messages) -> (str, str):
         OPENAI_CHAT_COMPLETION_OPTIONS["engine"] = config["AI"]["ENGINE"]
     else:
         OPENAI_CHAT_COMPLETION_OPTIONS["model"] = "gpt-3.5-turbo"
+        openai.api_base = config["AI"]["BASE"]
 
     response = await openai.ChatCompletion.acreate(
         messages=messages,
